@@ -3,8 +3,8 @@
 var Mongo = require('mongodb');
 
 function Transfer(o){
-  this.ToAccountId = Mongo.ObjectID(o.accountId);
-  this.FromAccountId = Mongo.ObjectID(o.accountId);
+  this.toAccountId = Mongo.ObjectID(o.toAccountId);
+  this.fromAccountId = Mongo.ObjectID(o.fromAccountId);
   this.amount = parseFloat(o.amount);
 }
 
@@ -13,13 +13,13 @@ Object.defineProperty(Transfer, 'collection', {
 });
 
 Transfer.create = function(o, cb){
-  var t = new Transaction(o);
-  Transaction.collection.save(t, cb);
+  var t = new Transfer(o);
+  Transfer.collection.save(t, cb);
 };
 
 Transfer.findByAccountId = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Transaction.collection.find({accountId:_id}).toArray(cb);
+  Transfer.collection.find({$or:[{toAccountId:_id}, {fromAccountId:_id}]}).toArray(cb);
 };
 
 module.exports = Transfer;
