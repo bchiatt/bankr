@@ -17,13 +17,9 @@ Transaction.create = function(o, cb){
   Transaction.collection.save(t, cb);
 };
 
-Transaction.all = function(cb){
-  Transaction.collection.find().toArray(cb);
-};
-
-Transaction.findById = function(id, cb){
+Transaction.findByAccountId = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Transaction.collection.findOne({_id:_id}, cb);
+  Transaction.collection.find({accountId:_id}).toArray(cb);
 };
 
 module.exports = Transaction;

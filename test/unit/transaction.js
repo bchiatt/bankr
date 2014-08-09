@@ -19,7 +19,7 @@ describe('Transaction', function(){
 
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/freshdb.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
-      console.log(stdout, stderr);
+      //console.log(stdout, stderr);
       done();
     });
   });
@@ -32,6 +32,30 @@ describe('Transaction', function(){
       expect(t.type).to.equal('deposit');
       expect(t.accountId).to.be.instanceof(Mongo.ObjectID);
       expect(t.amount).to.equal(52.75);
+    });
+  });
+
+  describe('.create', function(){
+    it('should save a new Transaction object', function(done){
+      Transaction.create({'_id':'53d01ddf4fbbd6de0b530037', 'accountId':'53d01ddf4fbbd6de0b530014', 'type':'deposit', 'amount':25.75}, function(err, transaction){
+        expect(transaction._id).to.be.instanceof(Mongo.ObjectID);
+        expect(transaction).to.be.instanceof(Transaction);
+        expect(transaction.accountId).to.be.instanceof(Mongo.ObjectID);
+        expect(transaction.type).to.equal('deposit');
+        expect(transaction.amount).to.equal(25.75);
+        done();
+      });
+    });
+  });
+
+  describe('.findByAccountId', function(){
+    it('should find all transactions from Kelly\'s account', function(done){
+      Transaction.findByAccountId('53d01ddf4fbbd6de0b530016', function(err, transactions){
+        expect(transactions.length).to.equal(5);
+        expect(transactions[3].type).to.equal('withdraw');
+        expect(transactions[4].amount).to.equal(625);
+        done();
+      });
     });
   });
 });
