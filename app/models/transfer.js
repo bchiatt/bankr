@@ -5,7 +5,7 @@ var Mongo = require('mongodb');
 function Transfer(o){
   this.toAccountId = Mongo.ObjectID(o.toAccountId);
   this.fromAccountId = Mongo.ObjectID(o.fromAccountId);
-  this.amount = parseFloat(o.amount);
+  this.amount = o.amount * 1;
 }
 
 Object.defineProperty(Transfer, 'collection', {

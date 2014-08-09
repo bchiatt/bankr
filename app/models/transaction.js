@@ -5,7 +5,7 @@ var Mongo = require('mongodb');
 function Transaction(o){
   this.type = o.type;
   this.accountId = Mongo.ObjectID(o.accountId);
-  this.amount = parseFloat(o.amount);
+  this.amount = o.amount * 1;
 }
 
 Object.defineProperty(Transaction, 'collection', {
