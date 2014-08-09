@@ -1,4 +1,0 @@
-{"_id":{"$oid":"53d01ddf4fbbd6de0b530032"},"toAccountId":{"$oid":"53d01ddf4fbbd6de0b530014"}, "fromAccountId":{"$oid":"53d01ddf4fbbd6de0b530015"}, "amount","125.00"}
-{"_id":{"$oid":"53d01ddf4fbbd6de0b530032"},"toAccountId":{"$oid":"53d01ddf4fbbd6de0b530014"}, "fromAccountId":{"$oid":"53d01ddf4fbbd6de0b530016"}, "amount","75.00"}
-{"_id":{"$oid":"53d01ddf4fbbd6de0b530032"},"toAccountId":{"$oid":"53d01ddf4fbbd6de0b530016"}, "fromAccountId":{"$oid":"53d01ddf4fbbd6de0b530014"}, "amount","15.00"}
-{"_id":{"$oid":"53d01ddf4fbbd6de0b530032"},"toAccountId":{"$oid":"53d01ddf4fbbd6de0b530015"}, "fromAccountId":{"$oid":"53d01ddf4fbbd6de0b530016"}, "amount","95.00"}
